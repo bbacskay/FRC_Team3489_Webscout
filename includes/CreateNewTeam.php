@@ -22,13 +22,12 @@ $sql = "INSERT INTO teams (team_number, team_name)
 VALUES ($team_number, $team_name)";
 
 if ($conn->query($sql) === true) {
-   return "New record created successfully";
+   echo "New record created successfully";
 } else {
-    return "Error: " . $sql . "<br>" . $conn->error;
+    echo "Error: " . $sql . "<br>" . $conn->error;
 }
 
 $conn->close();
-
-
+}
 
 ?>

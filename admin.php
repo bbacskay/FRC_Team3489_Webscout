@@ -1,5 +1,5 @@
 <?php include 'includes/header.php'?>
-<?php include 'includes/classes.php' ?>
+<?php include 'includes/CreateNewTeam.php' ?>
 <!-- Begin Main Content -->
 
   <body>
@@ -31,9 +31,8 @@ $dbstatus = "Connected successfully";
 echo "Database Status: <label>" . $dbstatus . "</label>";
 ?>
 </div>
-<?php CreateNewTeam(team_number, team_name) ?>
 <!-- Manage Teams -->
-<div class="container"><form action="classes.php" method="post">
+<div class="container"><form action="CreateNewTeam.php" method="post">
 Team Number: <input type="text" name="team_number"><br>
 Team Name: <input type="text" name="team_name"><br>
 <input type="submit">
