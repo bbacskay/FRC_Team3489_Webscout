@@ -32,7 +32,7 @@ echo "Database Status: <label>" . $dbstatus . "</label>";
 ?>
 </div>
 <!-- Manage Teams -->
-<div class="container"><form action="CreateNewTeam.php" method="post">
+<div class="container"><form action="includes/CreateNewTeam.php" method="post">
 Team Number: <input type="text" name="team_number"><br>
 Team Name: <input type="text" name="team_name"><br>
 <input type="submit">
