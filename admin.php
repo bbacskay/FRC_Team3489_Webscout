@@ -1,9 +1,10 @@
 <?php 
  include 'includes/header.php';
  include 'includes/DBClass.php';
- 
+ echo 'Creating connection';
  $db = new DBClass();
  $results = $db.Query('SELECT * FROM teams;');
+ echo 'Complete';
  ?>
 
 <!-- Begin Main Content -->
