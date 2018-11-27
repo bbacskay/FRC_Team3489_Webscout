@@ -1,23 +1,15 @@
-<?php include 'includes/header.php'?>
-<?php include 'includes/CreateNewTeam.php' ?>
+<?php 
+ include 'includes/header.php';
+ include 'includes/DBClass.php';
+ 
+ $db = new DBClass();
+ $results = $db.Query('SELECT * FROM teams;');
+ ?>
+
 <!-- Begin Main Content -->
 
   <body>
-  <?php
-$servername = "localhost";
-$username = "scoutingapp";
-$password = "team3489";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-$dbstatus = "Connected successfully";
-?>
-
+  
     <div class="container">
 
       <div class="starter-template">
@@ -27,12 +19,9 @@ $dbstatus = "Connected successfully";
 
     </div><!-- /.container -->
 <div class="container">
-  <?php
-echo "Database Status: <label>" . $dbstatus . "</label>";
-?>
-</div>
+ Teams: <?php echo $results ?>
 <!-- Manage Teams -->
-<div class="container"><form action="includes/CreateNewTeam.php" method="post">
+<div class="container"><form action="admin.php" method="post">
 Team Number: <input type="text" name="team_number"><br>
 Team Name: <input type="text" name="team_name"><br>
 <input type="submit">
