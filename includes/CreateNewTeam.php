@@ -1,7 +1,7 @@
 <?php
 
-function CreateNewTeam($team_number, $team_name) {
-
+//function CreateNewTeam($team_number, $team_name) {
+{
 
     $servername = "localhost";
     $username = "scoutingapp";
