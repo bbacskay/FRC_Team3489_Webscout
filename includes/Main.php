@@ -31,5 +31,21 @@
             echo "    <link href=\"css/scouting.css\" type=\"text/css\" rel=\"stylesheet\">\n";
             echo "  </head>\n";
         }
+
+        public function navbar(string $title){
+           echo "<body>\n";
+           echo "<nav class=\"navbar navbar-inverse\">\n";
+           echo "<div class=\"container\">\n";
+           echo "<div id=\"navbar\" class=\"collapse navbar-collapse\">\n";
+           echo "<ul class=\"nav navbar-nav\">\n";
+           echo "<li class=\"active\"><a href=\"index.php\">Home</a></li>\n";
+           echo "<li><a href=\"datainput.php\">Scout a match</a></li>\n";
+           echo "<li><a href=\"dataview.php\">View Data</a></li>\n";
+           echo "<li><a href=\"admin.php\">Admin</a></li>\n";
+           echo "</ul>\n";
+           echo "</div><!--/.nav-collapse -->\n";
+           echo "</div>\n";
+           echo "</nav>\n";
+        }
     }
 ?>

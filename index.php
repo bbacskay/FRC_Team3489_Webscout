@@ -5,9 +5,10 @@
 
   $main->pageStart();
   $main->header('Category 5 Scouting');
-?>
-  <body>
 
+  $main->navbar('Home');
+?>
+  
   <!-- Begin Main Content -->
     <div class="container">
 
