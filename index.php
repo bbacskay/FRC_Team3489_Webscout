@@ -1,7 +1,14 @@
+<?php 
+  require_once( 'includes/Main.php' );
 
-<?php include 'includes/header.php'?>
+  $main = new Main();
 
-<!-- Begin Main Content -->
+  $main->pageStart();
+  $main->header('Category 5 Scouting');
+?>
+  <body>
+
+  <!-- Begin Main Content -->
     <div class="container">
 
       <div class="starter-template">
@@ -15,7 +22,9 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="/scouting/jquery/jquery-3.3.1.min.js"></script>
+    <script src="js/jquery-3.3.1.min.js"></script>
 
   </body>
-</html>
+<?php
+  $main->pageEnd();
+?>

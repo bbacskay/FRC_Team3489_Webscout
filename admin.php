@@ -1,12 +1,8 @@
 <?php 
  include 'includes/header.php';
  include 'includes/DBClass.php';
- echo 'Creating connection';
- $db = new DBClass();
- $results = $db.Query('SELECT * FROM teams;');
- echo 'Complete';
  ?>
-
+ 
 <!-- Begin Main Content -->
 
   <body>
@@ -20,6 +16,12 @@
 
     </div><!-- /.container -->
 <div class="container">
+<?php
+echo 'Creating connection';
+$db = new DBClass();
+$results = $db->Query('SELECT * FROM teams;');
+echo 'Complete';
+?>
  Teams: <?php echo $results ?>
 <!-- Manage Teams -->
 <div class="container"><form action="admin.php" method="post">
