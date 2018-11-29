@@ -34,10 +34,10 @@
 
         public function navbar(string $active_page){
             $menu = array(
-                "Home"=>"#index", 
-                "Scout a match"=>"#datainput", 
-                "View Data"=>"#dataview",
-                "Admin"=>"#admin"
+                "Home"=>"index", 
+                "Scout a match"=>"datainput", 
+                "View Data"=>"dataview",
+                "Admin"=>"admin"
                 );
 
            echo "<body>\n";
@@ -50,7 +50,7 @@
                 if ($active_page == $x){
                  echo "class=\"active\"";   
                 }
-                echo"><a href=\"index.php?" . $x_value . "\">". $x . "</a></li>\n";
+                echo"><a href=\"index.php?page=" . $x_value . "\">". $x . "</a></li>\n";
 
            }
            echo "</ul>\n";

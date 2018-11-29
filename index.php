@@ -13,8 +13,8 @@
     <div class="container">
 
       <div class="starter-template">
-        <h1>Home Page</h1>
-        <p class="lead">This is the home page.</p>
+        <h1><?php echo $_GET["page"] ?></h1>
+        <?php include($_GET["page"] . ".php") ?>
       </div>
 
     </div><!-- /.container -->
