@@ -22,9 +22,9 @@ echo "<table>
 </tr>";
 while ($row = mysqli_fetch_array($results)) {
     echo "<tr>";
-    echo "<td>" . $row['team_number'] . "</td>";
-    echo "<td>" . $row['team_name'] . "</td>";
-    echo "<td>" . $row['comments'] . "</td>";
+    echo "<td>" . $row['teamnumber'] . "</td>";
+    echo "<td>" . $row['teamname'] . "</td>";
+    echo "<td>" . $row['team_comments'] . "</td>";
 
     echo "</tr>";
 }
