@@ -4,7 +4,7 @@
   $main = new Main();
 
   $main->pageStart();
-  $main->header('Category 5 Scouting');
+  $main->header('Category 5 Scouting - dev');
 
   $main->navbar('Home');
 ?>
