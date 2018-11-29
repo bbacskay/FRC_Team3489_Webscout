@@ -14,7 +14,7 @@
 
       <div class="starter-template">
         <h1><?php echo $_GET["page"] ?></h1>
-        <?php //include($_GET["page"] . ".php") ?>
+        <?php include('admin.php') ?>
       </div>
 
     </div><!-- /.container -->
