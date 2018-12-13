@@ -1,8 +1,14 @@
 <?php
 // This is the Main class for the scouting app
+    require_once('includes\DBClass.php');
 
     class Main {
         // Properties
+        private $db;
+
+        function __construct() {
+            $db = new DBClass();
+        }
 
 
         // Methods
