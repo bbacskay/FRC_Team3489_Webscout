@@ -35,7 +35,8 @@ if($num>0){
         extract($row);
  
         $team_item=array(
-            "no" => $teamnumber,
+            "number" => $team_number,
+            "ba_team_key" => $ba_team_key,
             "name" => $teamname,
             "comment" => html_entity_decode($team_comments)
         );
