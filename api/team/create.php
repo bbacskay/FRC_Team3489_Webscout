@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 // get database connection
 include_once '../config/database.php';
  
-// instantiate product object
+// instantiate team object
 include_once '../objects/team.php';
  
 $database = new Database();

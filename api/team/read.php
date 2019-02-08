@@ -15,7 +15,7 @@ $db = $database->getConnection();
 $team = new Team($db);
  
 // query products
-$stmt = $team->read();
+$stmt = $team->load();
 $num = $stmt->rowCount();
  
 // check if more than 0 record found
@@ -23,7 +23,6 @@ if($num>0){
  
     // products array
     $team_arr=array();
-    //$team_arr["records"]=array();
  
     // retrieve our table contents
     // fetch() is faster than fetchAll()
