@@ -1,9 +1,10 @@
 <?php
+    require_once('tba_config.php');
 
     $ch = curl_init("https://www.thebluealliance.com/api/v3/event/2019scmb/teams");
 
     //Set header with the auth key
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array('X-TBA-Auth-Key: eaBWLbaY8gncpBWBDSji7aFPm4ayudRPfMSCrdN469PZqnAfn6UTySTpWE7XABki'));
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('X-TBA-Auth-Key: ' . $tba_apikey));
     
     // Add headers to the output string
     //curl_setopt($ch, CURLOPT_HEADER, true);
