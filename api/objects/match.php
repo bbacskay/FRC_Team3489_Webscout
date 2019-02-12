@@ -23,13 +23,20 @@ class Match {
     }
     
     // read match
-    function read(){
+    function read($eventId, $compLevel){
         
         // select all query
-        $query = "SELECT * FROM " . $this->table_name . " WHERE comp_level='qm' ORDER BY match_no ASC";
-        
+        $query = "SELECT * FROM " . $this->table_name . " WHERE comp_level=:compLevel and event_id=:eventId ORDER BY match_no ASC";
+
         // prepare query statement
         $stmt = $this->conn->prepare($query);
+
+        $tmpEventId = htmlspecialchars(strip_tags($eventId));
+        $tmpCompLevel = htmlspecialchars(strip_tags($compLevel));
+
+        // bind values
+        $stmt->bindValue(":compLevel", $compLevel, PDO::PARAM_INT);
+        $stmt->bindValue(":eventId", $tmpEventId, PDO::PARAM_STR);
         
         // execute query
         $stmt->execute();
