@@ -44,7 +44,7 @@ class Match {
         return $stmt;
     }
 
-    // create event
+    // create update
     function create(){
     
         // query to insert record
@@ -95,23 +95,67 @@ class Match {
     // delete match
     function delete(){
 
-    // delete query
-    $query = "DELETE FROM " . $this->table_name . " WHERE match_id = ?";
- 
-    // prepare query
-    $stmt = $this->conn->prepare($query);
- 
-    // sanitize
-    $this->match_id=htmlspecialchars(strip_tags($this->match_id));
- 
-    // bind id of record to delete
-    $stmt->bindParam(1, $this->match_id);
- 
-    // execute query
-    if($stmt->execute()){
-        return true;
+        // delete query
+        $query = "DELETE FROM " . $this->table_name . " WHERE match_id = ?";
+    
+        // prepare query
+        $stmt = $this->conn->prepare($query);
+    
+        // sanitize
+        $this->match_id=htmlspecialchars(strip_tags($this->match_id));
+    
+        // bind id of record to delete
+        $stmt->bindParam(1, $this->match_id);
+    
+        // execute query
+        if($stmt->execute()){
+            return true;
+        }
+    
+        return false;
     }
- 
-    return false;
+
+    // update match
+    function update(){
+    
+        // query to insert record
+        $query = "UPDATE " . $this->table_name . " SET
+            blue_1=:blue1,
+            blue_2=:blue2,
+            blue_3=:blue3,
+            red_1=:red1,
+            red_2=:red2,
+            red_3=:red3 
+            WHERE match_id=:matchid";
+    
+        // prepare query
+        $stmt = $this->conn->prepare($query);
+    
+        // sanitize
+        $this->match_id=htmlspecialchars(strip_tags($this->match_id));
+        $this->blue_1=htmlspecialchars(strip_tags($this->blue_1));
+        $this->blue_2=htmlspecialchars(strip_tags($this->blue_2));
+        $this->blue_3=htmlspecialchars(strip_tags($this->blue_3));
+        $this->red_1=htmlspecialchars(strip_tags($this->red_1));
+        $this->red_2=htmlspecialchars(strip_tags($this->red_2));
+        $this->red_3=htmlspecialchars(strip_tags($this->red_3));
+    
+        // bind values
+        $stmt->bindParam(":matchid", $this->match_id);
+        $stmt->bindParam(":blue1", $this->blue_1);
+        $stmt->bindParam(":blue2", $this->blue_2);
+        $stmt->bindParam(":blue3", $this->blue_3);
+        $stmt->bindParam(":red1", $this->red_1);
+        $stmt->bindParam(":red2", $this->red_2);
+        $stmt->bindParam(":red3", $this->red_3);
+    
+        // execute query
+        if($stmt->execute()){
+            return true;
+        }
+    
+        return false;        
     }
+
+
 }

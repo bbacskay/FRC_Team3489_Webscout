@@ -51,6 +51,7 @@ if (!empty($eventId) &&
             extract($row);
     
             $match_item=array(
+                "matchId" => $match_id,
                 "matchNo" => $match_no,
                 "blue1TeamNumber" => $blue_1,
                 "blue2TeamNumber" => $blue_2,
