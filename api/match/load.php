@@ -30,8 +30,11 @@ if (!empty($_GET['complevel'])) {
 if (!empty($eventId) &&
     !empty($compLevel)) {
 
-    // query products
-    $stmt = $match->read($eventId, $compLevel);
+    $match->event_id=$eventId;
+    $match->comp_level=$compLevel;
+
+    // query matches
+    $stmt = $match->load();
     $num = $stmt->rowCount();
     
     // check if more than 0 record found
