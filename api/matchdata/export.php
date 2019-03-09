@@ -36,8 +36,7 @@ $csvHeaderQuestionsArray = array(
     10 => "TQ4",
     11 => "TQ5",
     12 => "EQ1",
-    13 => "EQ2",
-    14 => "EQ3"
+    13 => "EQ2"
 );
 
 // Create the csv header
@@ -93,7 +92,7 @@ if($num>0){
             //echo "key: " .$key . "\n";
             //var_dump($responses[$key]);
             
-            if ($key != null) {
+            if ($key !== null) {
                 //$response='';
                 $response = $responses[$key]->response;
                 
