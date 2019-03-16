@@ -58,7 +58,8 @@ if (
             "match_id" => $match_id,
             "team_no" => $team_number,
             "scout_id" => $scout_id,
-            "data" => json_decode(htmlspecialchars_decode($response)),
+            //"data" => json_decode(htmlspecialchars_decode($response)),
+            "data" => json_decode($response),
             "note" => $note
         );
 

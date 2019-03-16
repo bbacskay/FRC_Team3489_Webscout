@@ -70,7 +70,7 @@ else{
     // set response code - 400 bad request
     http_response_code(400);
  
-    $message = "Unable to read scouting data, parameter is missing. (";
+    $message = "Unable to update scouting data, parameter is missing. (";
 
     if (empty($data->id)) {
         $message = $message . " id ";  

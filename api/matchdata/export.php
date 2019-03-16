@@ -13,6 +13,9 @@ include_once '../objects/matchdata.php';
 $database = new Database();
 $db = $database->getConnection();
 
+// !!!!!!!!!!!!!!!!!!!!!!!
+// get event id !!!!!!!! TODO!
+$eventId = 2;
 
 // Static elements of the csv header
 $csvHeaderStdArr = array(
@@ -50,6 +53,7 @@ $scoutingData = new ScoutData($db);
 
 
 // query scouting data
+$scoutingData->event_id = $eventId;
 $stmt = $scoutingData->load();
 $num = $stmt->rowCount();
 
@@ -71,7 +75,7 @@ if($num>0){
         // Add static part
         $scoutingDataItem=array(
             "team_no" => $team_number,
-            "match_id" => $match_id,
+            "match_no" => $match_no,
             "scout_id" => $scout_id,
             "note" => $note
         );
