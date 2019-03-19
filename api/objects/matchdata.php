@@ -387,15 +387,17 @@ class ScoutData {
 
                     $questions = array();
                     
-                    foreach($responses as $response) {
-                        $question=new stdClass();
-                        $question->id=$response->id;
-                        $question->value=$response->response;
-                        $question->ok=isset($response->response);
+                    if ($responses!=NULL) {
+                        foreach($responses as $response) {
+                            $question=new stdClass();
+                            $question->id=$response->id;
+                            $question->value=$response->response;
+                            $question->ok=isset($response->response);
 
-                        array_push($questions,$question);
+                            array_push($questions,$question);
+                        }
                     }
-                    
+
                     $blue_3->questions=$questions;
 
                     //var_dump($blue_3);
@@ -432,13 +434,15 @@ class ScoutData {
 
                     $questions = array();
                     
-                    foreach($responses as $response) {
-                        $question=new stdClass();
-                        $question->id=$response->id;
-                        $question->value=$response->response;
-                        $question->ok=isset($response->response);
+                    if ($responses!=NULL){
+                        foreach($responses as $response) {
+                            $question=new stdClass();
+                            $question->id=$response->id;
+                            $question->value=$response->response;
+                            $question->ok=isset($response->response);
 
-                        array_push($questions,$question);
+                            array_push($questions,$question);
+                        }
                     }
                     
                     $red_1->questions=$questions;
@@ -451,6 +455,100 @@ class ScoutData {
 
                 $monitoringDataItem['red_1']=$red_1;
                 
+
+                // Get Red 2 team scouting data
+                $this->team_no=$MatchData['red_2'];
+                $stmt2 = $this->read();
+                $num2 = $stmt2->rowCount();
+
+                //echo "match_id=" . $this->match_id . " red 1 team_no=" . $this->team_no . "\n"; 
+                //var_dump($stmt2);
+                //echo "Num2:" . $num2 . "\n";
+
+                $red_2->teamNo = $MatchData['red_2'];  // Add team number anyway
+
+                if ($num2>0) {
+                    $red2Ok = true;
+
+                    $row = $stmt2->fetch(PDO::FETCH_ASSOC);
+
+                    $red_2->scouting_data_id = $row['scouting_data_id'];
+                    $red_2->scout = $row['firstname'] . " " . $row['lastname'];
+                    $red_2->note = $row['note'];
+
+                    $responses=json_decode(htmlspecialchars_decode($row['response']));
+                    //var_dump($responses);
+
+                    $questions = array();
+                    
+                    if ($responses!=NULL){
+                        foreach($responses as $response) {
+                            $question=new stdClass();
+                            $question->id=$response->id;
+                            $question->value=$response->response;
+                            $question->ok=isset($response->response);
+
+                            array_push($questions,$question);
+                        }
+                    }
+                    
+                    $red_2->questions=$questions;
+
+                    //var_dump($red_2);
+
+                } else {
+                    $red2Ok = false;
+                }
+
+                $monitoringDataItem['red_2']=$red_2;
+
+
+                // Get Red 3 team scouting data
+                $this->team_no=$MatchData['red_3'];
+                $stmt2 = $this->read();
+                $num2 = $stmt2->rowCount();
+
+                //echo "match_id=" . $this->match_id . " red 1 team_no=" . $this->team_no . "\n"; 
+                //var_dump($stmt2);
+                //echo "Num2:" . $num2 . "\n";
+
+                $red_3->teamNo = $MatchData['red_3'];  // Add team number anyway
+
+                if ($num2>0) {
+                    $red3Ok = true;
+
+                    $row = $stmt2->fetch(PDO::FETCH_ASSOC);
+
+                    $red_3->scouting_data_id = $row['scouting_data_id'];
+                    $red_3->scout = $row['firstname'] . " " . $row['lastname'];
+                    $red_3->note = $row['note'];
+
+                    $responses=json_decode(htmlspecialchars_decode($row['response']));
+                    //var_dump($responses);
+
+                    $questions = array();
+                    
+                    if ($responses!=NULL){
+                        foreach($responses as $response) {
+                            $question=new stdClass();
+                            $question->id=$response->id;
+                            $question->value=$response->response;
+                            $question->ok=isset($response->response);
+
+                            array_push($questions,$question);
+                        }
+                    }
+                    
+                    $red_3->questions=$questions;
+
+                    //var_dump($red_3);
+
+                } else {
+                    $red3Ok = false;
+                }
+
+                $monitoringDataItem['red_3']=$red_3;
+
 
                 if ( ($blue1Ok == true) ||
                      ($blue2Ok == true) ||

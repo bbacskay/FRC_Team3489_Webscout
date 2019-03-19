@@ -80,7 +80,9 @@ if (!empty($eventId) &&
                 "blue_1" => $matchData['blue_1'],
                 "blue_2" => $matchData['blue_2'],
                 "blue_3" => $matchData['blue_3'],
-                "red_1"  => $matchdata['red_1']
+                "red_1"  => $matchData['red_1'],
+                "red_2"  => $matchData['red_2'],
+                "red_3"  => $matchData['red_3']
             );
 
             /*
