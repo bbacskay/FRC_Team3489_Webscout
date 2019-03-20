@@ -47,7 +47,7 @@ class Configuration {
     
         // bind values
         $stmt->bindParam(":optionName", $this->name);
-        $stmt->bindParam(":optionName", $this->value);
+        $stmt->bindParam(":optionValue", $this->value);
     
         // execute query
         if($stmt->execute()){
@@ -61,7 +61,7 @@ class Configuration {
     function update() {
         
         // update query
-        $query = "UPDATE " . $this->table_name . "SET value=:optionValue WHERE name=:optionName";
+        $query = "UPDATE " . $this->table_name . " SET value=:optionValue WHERE name=:optionName";
 
         $stmt = $this->conn->prepare($query);
 
@@ -71,7 +71,7 @@ class Configuration {
 
         // bind values
         $stmt->bindParam(":optionName", $this->name);
-        $stmt->bindParam(":optionName", $this->value);
+        $stmt->bindParam(":optionValue", $this->value);
 
         // execute query
         if($stmt->execute()){
