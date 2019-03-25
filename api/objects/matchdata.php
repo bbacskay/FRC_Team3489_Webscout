@@ -143,7 +143,8 @@ class ScoutData {
         // query to insert record
         $query = "UPDATE " . $this->table_name . " SET
             response=:data,
-            note=:note
+            note=:note,
+            scout_id=:scout_id 
             WHERE scouting_data_id=:id";
     
         // prepare query
@@ -154,11 +155,13 @@ class ScoutData {
         $this->data=strip_tags($this->data);
         $this->note=htmlspecialchars(strip_tags($this->note));
         $this->id=htmlspecialchars(strip_tags($this->id));
+        $this->scout_id=htmlspecialchars(strip_tags($this->scout_id));
     
         // bind values
         $stmt->bindParam(":data", $this->data);
         $stmt->bindParam(":note", $this->note);
         $stmt->bindParam(":id", $this->id);
+        $stmt->bindParam(":scout_id", $this->scout_id);
     
         // execute query
         if($stmt->execute()){

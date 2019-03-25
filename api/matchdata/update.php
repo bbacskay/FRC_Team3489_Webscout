@@ -35,11 +35,13 @@ $data = json_decode(file_get_contents("php://input"));
 // make sure data is not empty
 if(
     !empty($data->id) &&
+    !empty($data->scoutid) &&
     !empty($data->data) &&
     isset($data->note)
 ){ 
     // set scouting data property values
     $scoutingData->id   = $data->id;
+    $scoutingData->scout_id = $data->scoutid;
     $scoutingData->data = json_encode($data->data);
     $scoutingData->note = $data->note;
  
@@ -78,6 +80,10 @@ else{
 
     if (empty($data->data)) {
         $message = $message . " data ";  
+    }
+
+    if (empty($data->scoutid)) {
+        $message = $message . " scoutid ";  
     }
 
     $message = $message . ")";
