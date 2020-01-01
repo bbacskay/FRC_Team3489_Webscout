@@ -37,7 +37,7 @@ if(
     !empty($data->no) &&
     !empty($data->ba_team_key) &&
     !empty($data->name) &&
-    !empty($data->comment)
+    isset($data->comment)          /* Comment variable must exist, but can be empty */
 ){
  
     // set team property values
