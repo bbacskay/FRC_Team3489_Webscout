@@ -37,7 +37,7 @@ if(
     !empty($data->no) &&
     !empty($data->ba_team_key) &&
     !empty($data->name) &&
-    !empty($data->comment) 
+    !empty($data->comment)
 ){
  
     // set team property values
@@ -56,7 +56,7 @@ if(
         echo json_encode(array("message" => "team was created."));
     }
  
-    // if unable to create the product, tell the user
+    // if unable to create the team, tell the user
     else{
  
         // set response code - 503 service unavailable
