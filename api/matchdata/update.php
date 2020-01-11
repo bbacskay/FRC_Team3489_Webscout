@@ -30,7 +30,13 @@ $db = $database->getConnection();
 $scoutingData = new ScoutData($db);
  
 // get posted data
-$data = json_decode(file_get_contents("php://input"));
+$rawdata = file_get_contents("php://input");
+$myFile = "./log/update.log";
+$fh = fopen($myFile, 'a') or die("can't open file");
+fwrite($fh, $_SERVER['REMOTE_ADDR'] . ": ");
+fwrite($fh, $rawdata . "\n");
+fclose($fh);
+$data = json_decode($rawdata);
  
 // make sure data is not empty
 if(
