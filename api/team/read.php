@@ -57,6 +57,6 @@ else{
  
     // tell the user no teams found
     echo json_encode(
-        array("message" => "No products found.")
+        array("message" => "No teams found.")
     );
 }
