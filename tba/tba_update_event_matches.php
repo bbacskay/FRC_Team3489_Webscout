@@ -1,9 +1,16 @@
 <?php
     require_once('tba_config.php');
 
-    $event_id = 1;  // Palmetto Regional 2019
+    //$event_id = 1;  // Palmetto Regional 2019
 
-    $ch = curl_init("https://www.thebluealliance.com/api/v3/event/2019scmb/matches");
+    // For testing:
+    // Rocket City Regional : 2019alhu
+    // San Francisco Regional 2019 : 2019casf
+    // SCRIW           : 2019sccol
+
+    $event_id = 2;
+
+    $ch = curl_init("https://www.thebluealliance.com/api/v3/event/2019sccol/matches");
 
     //Set header with the auth key
     curl_setopt($ch, CURLOPT_HTTPHEADER, array('X-TBA-Auth-Key: ' . $tba_apikey));
