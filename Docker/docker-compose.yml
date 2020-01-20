@@ -1,0 +1,47 @@
+version: "2"
+services:
+  scoutdb:
+    container_name: scoutdb
+    image: linuxserver/mariadb
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PW}
+      - MYSQL_DATABASE=${MYSQL_DB}
+      - MYSQL_USER=${MYSQL_USR}
+      - MYSQL_PASSWORD=${MYSQL_PWD}
+      - DATADIR=/var/lib/mysql
+    volumes:
+      - ${MYSQL_DB_PATH}:/var/lib/mysql
+
+  phpmyadmin:
+    container_name: phpmyadmin
+    image: mhzawadi/phpmyadmin
+    container_name: phpmyadmin
+    environment:
+      - PMA_HOST=scoutdb
+    restart: always
+    ports:
+      - 8091:80
+    volumes:
+      - /sessions
+    links:
+      - scoutdb
+
+  api:
+    container_name: scoutapi
+    build: './webapi/'
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - ALLOW_OVERRIDE=true
+    ports:
+      - "8090:80"
+    links:
+      - scoutdb
+    volumes:
+      - ${API_PATH}:/var/www/html/api
+      - ${TBA_PATH}:/var/www/html/tba
+    depends_on:
+      - scoutdb
+
