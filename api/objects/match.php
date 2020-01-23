@@ -36,8 +36,8 @@ class Match {
         $this->comp_level = htmlspecialchars(strip_tags($this->comp_level));
 
         // bind values
-        $stmt->bindValue(":compLevel", $this->comp_level, PDO::PARAM_INT);
-        $stmt->bindValue(":eventId", $this->event_id, PDO::PARAM_STR);
+        $stmt->bindValue(":compLevel", $this->comp_level, PDO::PARAM_STR);
+        $stmt->bindValue(":eventId", $this->event_id, PDO::PARAM_INT);
         
         // execute query
         $stmt->execute();
