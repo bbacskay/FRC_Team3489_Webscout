@@ -11,6 +11,7 @@ services:
       - MYSQL_USER=${MYSQL_USR}
       - MYSQL_PASSWORD=${MYSQL_PWD}
       - DATADIR=/var/lib/mysql
+    restart: unless-stopped
     volumes:
       - ${MYSQL_DB_PATH}:/var/lib/mysql
 
@@ -35,6 +36,7 @@ services:
       - PUID=1000
       - PGID=1000
       - ALLOW_OVERRIDE=true
+    restart: unless-stopped
     ports:
       - "8090:80"
     links:
