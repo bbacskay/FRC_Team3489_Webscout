@@ -38,7 +38,9 @@ if($num>0){
             "id" => $event_id,
             "ba_event_key" => html_entity_decode($ba_event_key),
             "name" => html_entity_decode($name),
-            "location" => html_entity_decode($location)
+            "location" => html_entity_decode($location),
+            "startDate" => $datestart,
+            "endDate" => $dateend
         );
  
         array_push($event_arr, $event_item);
