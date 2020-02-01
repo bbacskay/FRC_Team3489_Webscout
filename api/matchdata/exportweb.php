@@ -33,7 +33,7 @@ $db = $database->getConnection();
 
 // !!!!!!!!!!!!!!!!!!!!!!!
 // get event id !!!!!!!! TODO!
-$eventId = 2;
+$eventId = 6;
 
 // Static elements of the csv header
 $csvHeaderStdArr = array(
@@ -45,19 +45,16 @@ $csvHeaderStdArr = array(
 
 // Add the question IDs to the header
 $csvHeaderQuestionsArray = array(
-    1 => "SQ1",
-    2 => "SQ2",
-    3 => "SQ3",
-    4 => "SQ4",
-    5 => "SQ5",
-    6 => "SQ6",
-    7 => "TQ1",
-    8 => "TQ2",
-    9 => "TQ3",
-    10 => "TQ4",
-    11 => "TQ5",
-    12 => "EQ1",
-    13 => "EQ2"
+    1 => "AQ1",
+    2 => "AQ2",
+    3 => "AQ3",
+    4 => "TQ1",
+    5 => "TQ2",
+    6 => "TQ3",
+    7 => "TQ4",
+    8 => "TQ5",
+    9 => "EQ1",
+    10 => "EQ2"
 );
 
 // Create the csv header
