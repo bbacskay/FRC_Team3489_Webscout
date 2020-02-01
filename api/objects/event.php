@@ -7,6 +7,7 @@ class Event {
     
     // object properties
     public $event_id;
+    public $year;
     public $ba_event_key;
     public $name;
     public $location;
@@ -38,6 +39,7 @@ class Event {
     
         // query to insert record
         $query = "INSERT INTO " . $this->table_name . " SET
+            year         = :year,
             ba_event_key = :baEventKey,
             name         = :name,
             location     = :location,
@@ -48,6 +50,7 @@ class Event {
         $stmt = $this->conn->prepare($query);
     
         // sanitize
+        $this->year=htmlspecialchars(strip_tags($this->year));
         $this->ba_event_key=htmlspecialchars(strip_tags($this->ba_event_key));
         $this->name=htmlspecialchars(strip_tags($this->name));
         $this->location=htmlspecialchars(strip_tags($this->location));
@@ -55,6 +58,7 @@ class Event {
         $this->dateEnd=htmlspecialchars(strip_tags($this->dateEnd));
     
         // bind values
+        $stmt->bindParam(":year", $this->year);
         $stmt->bindParam(":baEventKey", $this->ba_event_key);
         $stmt->bindParam(":name", $this->name);
         $stmt->bindParam(":location", $this->location);
@@ -98,6 +102,7 @@ class Event {
     
         // query to insert record
         $query = "UPDATE " . $this->table_name . " SET
+            year=:year,
             ba_event_key=:baeventkey,
             name=:name,
             location=:location,
@@ -110,6 +115,7 @@ class Event {
     
         // sanitize
         $this->event_id=htmlspecialchars(strip_tags($this->event_id));
+        $this->year=htmlspecialchars(strip_tags($this->year));
         $this->ba_event_key=htmlspecialchars(strip_tags($this->ba_event_key));
         $this->name=htmlspecialchars(strip_tags($this->name));
         $this->location=htmlspecialchars(strip_tags($this->location));
@@ -118,6 +124,7 @@ class Event {
     
         // bind values
         $stmt->bindParam(":event_id", $this->event_id);
+        $stmt->bindParam(":year", $this->year);
         $stmt->bindParam(":baeventkey", $this->ba_event_key);
         $stmt->bindParam(":name", $this->name);
         $stmt->bindParam(":location", $this->location);
