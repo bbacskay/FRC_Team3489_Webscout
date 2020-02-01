@@ -91,4 +91,44 @@ class Event {
     
         return false;
     }
+
+
+    // update event
+    function update(){
+    
+        // query to insert record
+        $query = "UPDATE " . $this->table_name . " SET
+            ba_event_key=:baeventkey,
+            name=:name,
+            location=:location,
+            datestart=:datestart,
+            dateend=:dateend 
+            WHERE event_id=:event_id";
+    
+        // prepare query
+        $stmt = $this->conn->prepare($query);
+    
+        // sanitize
+        $this->event_id=htmlspecialchars(strip_tags($this->event_id));
+        $this->ba_event_key=htmlspecialchars(strip_tags($this->ba_event_key));
+        $this->name=htmlspecialchars(strip_tags($this->name));
+        $this->location=htmlspecialchars(strip_tags($this->location));
+        $this->dateStart=htmlspecialchars(strip_tags($this->dateStart));
+        $this->dateEnd=htmlspecialchars(strip_tags($this->dateEnd));
+    
+        // bind values
+        $stmt->bindParam(":event_id", $this->event_id);
+        $stmt->bindParam(":baeventkey", $this->ba_event_key);
+        $stmt->bindParam(":name", $this->name);
+        $stmt->bindParam(":location", $this->location);
+        $stmt->bindParam(":datestart", $this->dateStart);
+        $stmt->bindParam(":dateend", $this->dateEnd);
+    
+        // execute query
+        if($stmt->execute()){
+            return true;
+        }
+    
+        return false;        
+    }
 }

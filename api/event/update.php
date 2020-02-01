@@ -34,38 +34,40 @@ $data = json_decode(file_get_contents("php://input"));
  
 // make sure data is not empty
 if(
+    !empty($data->id) &&
     !empty($data->baEventKey) &&
     !empty($data->name) &&
     !empty($data->location) &&
     !empty($data->startDate) &&
-    !empty($data->endDate) 
-){
- 
-    // set event property values
+    !empty($data->endDate)
+){ 
+    // set scout property values
+    $event->event_id     = $data->id;
     $event->ba_event_key = $data->baEventKey;
-    $event->name = $data->name;
-    $event->location = $data->location;
-    $event->dateStart = $data->startDate;
-    $event->dateEnd = $data->endDate;
+    $event->name         = $data->name;
+    $event->location     = $data->location;
+    $event->dateStart    = $data->startDate;
+    $event->dateEnd      = $data->endDate;
+
  
-    // create the event
-    if($event->create()){
+    // update the event
+    if($event->update()){
  
         // set response code - 201 created
         http_response_code(201);
  
         // tell the user
-        echo json_encode(array("message" => "event was created."));
+        echo json_encode(array("message" => "scout was updated."));
     }
  
-    // if unable to create the event, tell the user
+    // if unable to update the scout, tell the user
     else{
  
         // set response code - 503 service unavailable
         http_response_code(503);
  
         // tell the user
-        echo json_encode(array("message" => "Unable to create event."));
+        echo json_encode(array("message" => "Unable to update the event."));
     }
 }
  
@@ -76,6 +78,6 @@ else{
     http_response_code(400);
  
     // tell the user
-    echo json_encode(array("message" => "Unable to create event. Data is incomplete."));
+    echo json_encode(array("message" => "Unable to update the event. Data is incomplete."));
 }
 ?>
