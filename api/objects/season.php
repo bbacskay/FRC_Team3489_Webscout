@@ -14,7 +14,7 @@ class Season {
         $this->conn = $db;
     }
     
-    // read team
+    // read season
     function read(){
         
         // select all query
@@ -29,7 +29,7 @@ class Season {
         return $stmt;
     }
 
-    // create event
+    // create season
     function create(){
     
         // query to insert record
