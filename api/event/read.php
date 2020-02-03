@@ -14,6 +14,12 @@ $db = $database->getConnection();
 // initialize object
 $event = new Event($db);
  
+if (!empty($_GET['year'])) {
+    $event->year = $_GET['year'];
+} else {
+    $event->year = NULL;
+}
+
 // query products
 $stmt = $event->read();
 $num = $stmt->rowCount();

@@ -19,15 +19,28 @@ class Event {
         $this->conn = $db;
     }
     
-    // read team
+    // read seasons
     function read(){
         
-        // select all query
-        $query = "SELECT * FROM " . $this->table_name . " ORDER BY event_id ASC";
+        if ( empty($this->year) ) {
+            // select all query
+            $query = "SELECT * FROM " . $this->table_name . " ORDER BY event_id ASC";
+        } else {
+            // select only from the season query
+            $query = "SELECT * FROM " . $this->table_name . " WHERE year=:year ORDER BY event_id ASC";
+        }
         
         // prepare query statement
         $stmt = $this->conn->prepare($query);
         
+        if ( !empty($this->year) ) {
+            // sanitize
+            $this->year=htmlspecialchars(strip_tags($this->year));
+
+            // bind values
+            $stmt->bindParam(":year", $this->year);
+        }
+
         // execute query
         $stmt->execute();
         
