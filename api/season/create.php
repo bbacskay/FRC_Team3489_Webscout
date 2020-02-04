@@ -40,7 +40,7 @@ if(
  
     // set event property values
     $season->year = $data->year;
-    $season->gameTtle = $data->gameTitle;
+    $season->gameTitle = $data->gameTitle;
 
  
     // create the season
