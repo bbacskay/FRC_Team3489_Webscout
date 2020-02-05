@@ -38,10 +38,11 @@ services:
       - ALLOW_OVERRIDE=true
     restart: unless-stopped
     ports:
-      - "8090:80"
+      - "80:80"
     links:
       - scoutdb
     volumes:
+      - ${WEBAPP_PATH}:/var/www/html
       - ${API_PATH}:/var/www/html/api
       - ${TBA_PATH}:/var/www/html/tba
     depends_on:
