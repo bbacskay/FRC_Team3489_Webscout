@@ -34,10 +34,12 @@ $data = json_decode(file_get_contents("php://input"));
  
 // make sure data is not empty
 if(
+    !empty($data->seasonId) &&
     !empty($data->year) &&
     !empty($data->gameTitle) 
 ){ 
     // set season property values
+    $season->id        = $data->seasonId;
     $season->year      = $data->year;
     $season->gameTitle = $data->gameTitle;
 

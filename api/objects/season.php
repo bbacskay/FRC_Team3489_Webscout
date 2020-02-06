@@ -6,6 +6,7 @@ class Season {
     private $table_name = "seasons";
     
     // object properties
+    public $id;
     public $year;
     public $gameTitle;
     
@@ -86,8 +87,9 @@ class Season {
     
         // query to insert record
         $query = "UPDATE " . $this->table_name . " SET
-            game_title=:gametitle
-            WHERE year=:year";
+            game_title=:gametitle,
+            year=:year 
+            WHERE year=:id";
     
         // prepare query
         $stmt = $this->conn->prepare($query);
@@ -95,10 +97,12 @@ class Season {
         // sanitize
         $this->year=htmlspecialchars(strip_tags($this->year));
         $this->gameTitle=htmlspecialchars(strip_tags($this->gameTitle));
+        $this->id=htmlspecialchars(strip_tags($this->id));
     
         // bind values
         $stmt->bindParam(":year", $this->year);
         $stmt->bindParam(":gametitle", $this->gameTitle);
+        $stmt->bindParam(":id", $this->id);
     
         // execute query
         if($stmt->execute()){
