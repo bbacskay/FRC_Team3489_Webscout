@@ -176,7 +176,7 @@ class ScoutData {
     function comments(){
     
         // select all query
-        $query = "SELECT * FROM " . $this->table_name . " WHERE note <>'' AND team_number=:teamno ORDER BY match_id DESC";
+        $query = "SELECT * FROM " . $this->table_name . " left join matches on " . $this->table_name . ".match_id=matches.match_id WHERE note <>'' AND team_number=:teamno ORDER BY matches.match_no DESC";
 
         // prepare query statement
         $stmt = $this->conn->prepare($query);

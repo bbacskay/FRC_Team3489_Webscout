@@ -39,7 +39,7 @@ if (!empty($_GET['teamno'])) {
             extract($row);
 
             $noteItem=array(
-                "matchNo" => $match_id,
+                "matchNo" => $match_no,
                 "note" => $note
             );
     
