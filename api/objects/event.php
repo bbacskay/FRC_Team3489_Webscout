@@ -51,14 +51,9 @@ class Event {
     function create(){
     
         // query to insert record
-        $query = "INSERT INTO " . $this->table_name . " SET
-            year         = :year,
-            ba_event_key = :baEventKey,
-            name         = :name,
-            location     = :location,
-            datestart    = :datestart,
-            dateend      = :dateend";
-    
+        $query = "INSERT INTO " . $this->table_name . " ( year,  ba_event_key, name,  location,  datestart,  dateend) VALUES 
+                                                        (:year, :baEventKey,  :name, :location, :datestart, :dateend)";
+
         // prepare query
         $stmt = $this->conn->prepare($query);
     

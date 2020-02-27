@@ -34,6 +34,7 @@ $data = json_decode(file_get_contents("php://input"));
  
 // make sure data is not empty
 if(
+    !empty($data->year) &&
     !empty($data->baEventKey) &&
     !empty($data->name) &&
     !empty($data->location) &&
@@ -42,6 +43,7 @@ if(
 ){
  
     // set event property values
+    $event->year = $data->year;
     $event->ba_event_key = $data->baEventKey;
     $event->name = $data->name;
     $event->location = $data->location;
