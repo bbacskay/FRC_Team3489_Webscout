@@ -200,7 +200,7 @@ class ScoutData {
         $monitoringData = array();
         
         // select all query
-        $query = "SELECT * FROM matches WHERE event_id=:eventId AND comp_level=:compLevel ORDER BY match_id ASC";
+        $query = "SELECT * FROM matches WHERE event_id=:eventId AND comp_level=:compLevel ORDER BY match_no DESC";
 
         // prepare query statement
         $stmt = $this->conn->prepare($query);
@@ -273,7 +273,7 @@ class ScoutData {
                 $stmt2 = $this->read();
                 $num2 = $stmt2->rowCount();
 
-                //echo "match_id=" . $this->match_id . " blue 1 team_no=" . $this->team_no . "\n"; 
+        	//echo "match_id=" . $this->match_id . " blue 1 team_no=" . $this->team_no . "\n"; 
                 //var_dump($stmt2);
                 //echo "Num2:" . $num2 . "\n";
                 

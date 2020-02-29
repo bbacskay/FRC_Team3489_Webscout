@@ -72,8 +72,9 @@ if (!empty($eventId) &&
         // retrieve our table contents
         // fetch() is faster than fetchAll()
         // http://stackoverflow.com/questions/2770630/pdofetchall-vs-pdofetch-in-a-loop
-        foreach($monitoringData as $matchData){
-
+        ////foreach($monitoringData as $matchData){
+	for($i=0;$i<10;$i++){
+	    $matchData=$monitoringData[$i];
             $monitoringDataItem=array(
                 "match_no" => $matchData['match_no'],
                 "ba_match_key" => $matchData['ba_match_key'],
