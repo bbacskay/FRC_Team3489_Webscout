@@ -8,9 +8,11 @@
     // San Francisco Regional 2019 : 2019casf
     // SCRIW           : 2019sccol
 
-    $event_id = 2;
+    // Palmetto Regional 2020: event_id=6 ; 2020scmb
 
-    $ch = curl_init("https://www.thebluealliance.com/api/v3/event/2019sccol/matches");
+    $event_id = 6;
+
+    $ch = curl_init("https://www.thebluealliance.com/api/v3/event/2020scmb/matches");
 
     //Set header with the auth key
     curl_setopt($ch, CURLOPT_HTTPHEADER, array('X-TBA-Auth-Key: ' . $tba_apikey));

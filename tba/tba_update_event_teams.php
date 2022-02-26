@@ -9,7 +9,7 @@
     // Rocket City Regional : 2019alhu 
     // San Francisco Regional 2019 : 2019casf
 
-    $ch = curl_init("https://www.thebluealliance.com/api/v3/event/2019sccol/teams");
+    $ch = curl_init("https://www.thebluealliance.com/api/v3/event/2022scan/teams");
 
     //Set header with the auth key
     curl_setopt($ch, CURLOPT_HTTPHEADER, array('X-TBA-Auth-Key: ' . $tba_apikey));
